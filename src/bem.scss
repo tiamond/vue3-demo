@@ -1,0 +1,32 @@
+$namespace: "lq" !default;
+$block-sel: "-" !default;
+$elem-sel: "--" !default;
+$mod-sel: "__" !default;
+
+// block
+@mixin b($block) {
+  $B: #{$namespace + $block-sel + $block};
+  .#{$B} {
+    @content;
+  }
+}
+
+// element
+@mixin e($elem) {
+  $selector: &;
+  @at-root {
+    #{$selector + $elem-sel + $elem} {
+      @content;
+    }
+  }
+}
+
+// modify
+@mixin m($mod) {
+  $selector: &;
+  @at-root {
+    #{$selector + $mod-sel + $mod} {
+      @content;
+    }
+  }
+}
